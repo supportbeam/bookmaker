@@ -7,6 +7,11 @@
   <%= csrf_meta_tags %>
 </head>
 <body>
+	<nav>
+		<%= link_to "Home", restaurants_path %>
+		<%= link_to "Add a new Restaurant", new_restaurant_url %>
+	</nav>
+
 
 <%= yield %>
 

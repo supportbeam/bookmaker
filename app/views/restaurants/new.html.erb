@@ -1,28 +1,5 @@
+
 <h1>Add a Restaurant</h1>
 
-<%= form_for @restaurant do |r| %> 
-	<div class="field">
-		<%= r.label :name %> <br>
-		<%= r.text_field :name %> <br>
-	</div>
-	<div class="field">
-		<%= r.label :description %> <br>
-		<%= r.text_area :description %> <br>
-	</div>
-	<div class="field">
-		<%= r.label :address %> <br>
-		<%= r.text_field :address %> <br>
-	</div>
-	<div class="field">
-		<%= r.label :phone_number %> <br>
-		<%= r.text_field :phone_number %> <br>
-	</div>
-	<div class="field">
-		<%= r.label :category %> <br>
-		<%= r.text_field :category %> <br>
-	</div>
-	
-	<div class="action">
-		<%= r.submit %>
-	</div>
-<% end %>
+
+<%= render 'form' %> 
