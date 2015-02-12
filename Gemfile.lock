@@ -37,10 +37,7 @@ GEM
       thread_safe (~> 0.3, >= 0.3.4)
       tzinfo (~> 1.1)
     arel (6.0.0)
-<<<<<<< HEAD
-=======
     awesome_print (1.6.1)
->>>>>>> 5b51b0d575795f686d4c9b8fd955166691f3df1d
     bcrypt (3.1.10)
     binding_of_caller (0.7.2)
       debug_inspector (>= 0.0.1)
@@ -164,10 +161,7 @@ PLATFORMS
   ruby
 
 DEPENDENCIES
-<<<<<<< HEAD
-=======
   awesome_print
->>>>>>> 5b51b0d575795f686d4c9b8fd955166691f3df1d
   bcrypt (~> 3.1.7)
   byebug
   coffee-rails (~> 4.1.0)
