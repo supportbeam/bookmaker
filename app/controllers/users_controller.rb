@@ -6,6 +6,7 @@ class UsersController < ApplicationController
 
   def create
     @user = User.new(user_params)
+    # binding.pry for debugging lines of code
     if @user.save
       redirect_to restaurants_url, notice:"Signed up!"
     else
