@@ -1,4 +1,4 @@
-<%= form_for @reservation do |r| %> 
+<%= form_for([@restaurant, @reservation]) do |r| %> 
 	<div class="field">
 		<%= r.label :party_size %> <br>
 		<%= r.number_field :party_size %> <br>
