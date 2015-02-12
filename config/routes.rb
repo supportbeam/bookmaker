@@ -1,5 +1,5 @@
-Rails.application.routes.draw do
-  
+Rails.application.routes.draw do  
+
   root 'restaurants#index'
 
   resources :users, only: [:new, :create]
@@ -8,6 +8,9 @@ Rails.application.routes.draw do
   resources :restaurants do
   	resources :reservations, only: [:new, :create]
 	end
+
+  resources :sessions, only: [:new, :create, :destroy]
+end
 
   # The priority is based upon order of creation: first created -> highest priority.
   # See how all your routes lay out with "rake routes".
@@ -63,4 +66,3 @@ Rails.application.routes.draw do
   #     # (app/controllers/admin/products_controller.rb)
   #     resources :products
   #   end
-end
