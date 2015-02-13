@@ -9,7 +9,7 @@
 	</div>
 	<div class="field">
 		<%= r.label :time %> <br>
-		<%= r.time_field :time %> <br>
+		<%= r.time_field :time, type: 'time', step: "#{60.minutes}" %> <br>
 	</div>
 	<div class="action">
 		<%= r.submit %>
