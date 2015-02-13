@@ -1,14 +1,13 @@
 class RestaurantsController < ApplicationController
 
   def index
-  	@restaurants = Restaurant.all
+    # @restaurants = Restaurant.all
+  	@restaurants = Restaurant.search(params[:search])
   end
+
 
   def show
   	@restaurant = Restaurant.find(params[:id])
-    if current_user
-      @reservation = @restaurant.reservations.build
-    end
   end
 
   def new
