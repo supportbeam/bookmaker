@@ -3,8 +3,7 @@ Rails.application.routes.draw do
   root 'restaurants#index'
 
   resources :users, only: [:new, :create]
-    # get 'users/new'
-    # get 'users/create'
+
   resources :restaurants do
   	resources :reservations, only: [:new, :create]
 	end
