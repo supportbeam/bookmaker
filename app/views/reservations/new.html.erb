@@ -1,2 +1,14 @@
-<h1>Make a Booking!</h1>
-<%= render 'form' %>
+<h1>Book a Reservation</h1>
+
+<% if current_user %>
+  <h4>New Reservation</h4>
+    <%= render 'reservations/form' %>
+  <% else %>
+  <p>Please <%= link_to "log in", new_session_path %> to make a reservation.</p>
+<% end %>
+
+<br>
+
+<div>
+  <%= link_to "Back to #{@restaurant.name}", restaurant_path(@restaurant) %>  
+</div>
