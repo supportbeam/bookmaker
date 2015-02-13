@@ -1,4 +1,5 @@
 class ReservationsController < ApplicationController
+	before_filter :ensure_logged_in, only: [:create, :destroy]
 	before_filter :load_restaurant
 
 	def new
@@ -11,6 +12,7 @@ class ReservationsController < ApplicationController
 		if @reservation.save
   		redirect_to restaurant_path(params[:restaurant_id])
   	else
+  		flash[:alert] = @reservation.errors.full_messages.to_sentence
   		render :new
   	end
   end
