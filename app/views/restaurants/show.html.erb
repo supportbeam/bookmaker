@@ -1,15 +1,39 @@
 <h1> <%= @restaurant.name %></h1>
-<h2><%= link_to "Book a table!", new_restaurant_reservation_path(@restaurant) %></h2>
 
 <div class="data">
-	<%= @restaurant.description%><br>
-	<%= @restaurant.address%> <br>
-	<%= @restaurant.phone_number%><br> 
-	<%= @restaurant.category%><br>
+  <%= @restaurant.description%><br>
+  <strong>Address:</strong> <%= @restaurant.address%> <br>
+  <strong>Phone:</strong> <%= @restaurant.phone_number%><br> 
+  <strong>Cuisine:</strong> <%= @restaurant.category%><br>
 </div>
 
-
+<!-- if the user created the restaurant, dispaly the edit and delete options below -->
 <p>
 <%= link_to "Edit", edit_restaurant_path %> |
-<%= link_to "Delete", @restaurant, method: :delete, data: {confirm: "Are you sure you want to delete this restaurant?"} %>
+
+<%= link_to "Delete Restaurant", @restaurant, method: :delete, data: {confirm: "Are you sure you want to delete this restaurant?"} %>
 </p>
+
+<h2><%= link_to "Reserve a table", new_restaurant_reservation_path(@restaurant) %></h2>
+
+<div>
+  <h3>Currently Booked Reservations</h3>
+<!-- why does an empty reservation info show up only when a user is logged in? -->
+  <% @restaurant.reservations.each do |reservation| %>
+    <p>
+      <% if reservation.user != nil %>
+        <strong>Booked for:</strong> <%= reservation.user.name %>
+      <% end %><br>
+      <strong>Party size:</strong> <%= reservation.party_size %><br>
+      <strong>Date:</strong> <%= reservation.date %><br>
+      <strong>Time:</strong> <%= reservation.time %>
+      <br>
+      <% if reservation.user == current_user %>
+        <%= link_to "Edit" , edit_restaurant_reservation_url(@restaurant, reservation) %>
+        <%= link_to "Cancel Reservation", restaurant_reservation_path(@restaurant, reservation), method: :delete, data: {confirm: "Are you sure you want to delete this restaurant?"} %>
+
+      <% end %>
+    </p>
+  <% end %>
+  
+</div>
