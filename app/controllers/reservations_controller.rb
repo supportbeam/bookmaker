@@ -2,26 +2,42 @@ class ReservationsController < ApplicationController
 	before_filter :ensure_logged_in, only: [:create, :destroy]
 	before_filter :load_restaurant
 
+  def show
+    @reservation = Reservation.find(params[:id])
+  end
+
 	def new
     @reservation = Reservation.new
   end
 
   def create
   	@reservation = @restaurant.reservations.build(reservation_params)
-  	# @reservation.user = current_user
+  	@reservation.user = current_user
 		if @reservation.save
-  		redirect_to restaurant_path(params[:restaurant_id])
+  		redirect_to restaurant_path(params[:restaurant_id]), notice: "Your reservation has been booked!"
   	else
   		flash[:alert] = @reservation.errors.full_messages.to_sentence
   		render :new
   	end
   end
 
+  def edit
+    @reservation = Reservation.find(params[:id])
+  end
+
+  def update
+    @reservation = Reservation.find(params[:id])
+    if @reservation.update_attributes(reservation_params)
+      redirect_to restaurant_path(@restaurant)
+    else
+      render :edit
+    end
+  end
+
 	def destroy
 		@reservation = Reservation.find(params[:id])
 		@reservation.destroy
-		redirect_to restaurant_path
-
+		redirect_to restaurant_path, notice: "Your reservation has been cancelled."
 	end
 
  private
