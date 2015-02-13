@@ -17,7 +17,8 @@ class ReservationsController < ApplicationController
   		redirect_to restaurant_path(params[:restaurant_id]), notice: "Your reservation has been booked!"
   	else
   		flash[:alert] = @reservation.errors.full_messages.to_sentence
-  		render :new
+  		redirect_to new_restaurant_reservation_path(@restaurant, @reservation)
+      # render :new
   	end
   end
 
@@ -30,7 +31,9 @@ class ReservationsController < ApplicationController
     if @reservation.update_attributes(reservation_params)
       redirect_to restaurant_path(@restaurant)
     else
-      render :edit
+      flash[:alert] = @reservation.errors.full_messages.to_sentence
+      redirect_to edit_restaurant_reservation_path(@restaurant, @reservation)
+      # render :edit
     end
   end
 
