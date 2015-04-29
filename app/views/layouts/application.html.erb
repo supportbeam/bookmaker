@@ -1,7 +1,7 @@
 <!DOCTYPE html>
 <html>
   <head>
-    <title>Bookmaker</title>
+    <title>Seat Yourself</title>
     <%= stylesheet_link_tag    'application', media: 'all', 'data-turbolinks-track' => true %>
     <%= javascript_include_tag 'application', 'data-turbolinks-track' => true %>
     <%= csrf_meta_tags %>
@@ -10,10 +10,10 @@
   <body>
   	<nav>
   		<%= link_to "Home", restaurants_path %>
-      <%= link_to "Add a new Restaurant", new_restaurant_url %>
+      <%= link_to "Add Restaurant", new_restaurant_url %>
        <% if current_user %>
         Signed in as <%= current_user.name %>
-        <%= link_to "My Reservations" %>
+        <%= link_to "My Reservations", user_path(current_user) %>
         <%= link_to "Log out", session_path("current"), :method => :delete %>
       <% else %>
         <%= link_to "Log in", new_session_path %> or <%= link_to "Sign up", new_user_path %>

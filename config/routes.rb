@@ -2,7 +2,7 @@ Rails.application.routes.draw do
 
   root 'restaurants#index'
 
-  resources :users, only: [:new, :create]
+  resources :users, only: [:new, :create, :show]
 
   resources :restaurants do
   	resources :reservations
