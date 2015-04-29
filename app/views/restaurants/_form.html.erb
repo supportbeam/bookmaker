@@ -18,12 +18,9 @@
 	<div class="field">
 		<%= r.label :category %> <br>
 		<%= select(:restaurant, :category, options_for_select(["Chinese", "Italian", "Fusion"])) %>
-<!-- 		<#%=r.text_field :category %> <br>
- -->	
  	</div>
-	<br>
 	<div class="action">
 		<%= r.submit %>
 	</div>
 
-	<% end %>
+<% end %>
