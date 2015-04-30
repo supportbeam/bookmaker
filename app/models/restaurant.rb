@@ -1,6 +1,7 @@
 class Restaurant < ActiveRecord::Base
   has_many :reservations
   has_many :users, through: :reservations
+  belongs_to :user # restaurant is owned by a user
 
   def available?(party_size, date, time)
 		total_reservation_count = reservations.where(date: date, time: time).sum(:party_size)

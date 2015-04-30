@@ -7,11 +7,13 @@
   <strong>Cuisine:</strong> <%= @restaurant.category%><br>
 </div>
 
-<!-- if the user created the restaurant, dispaly the edit and delete options below -->
-<p>
-<%= link_to "Edit", edit_restaurant_path %> |
-<%= link_to "Delete Restaurant", @restaurant, method: :delete, data: {confirm: "Are you sure you want to delete this restaurant?"} %>
-</p>
+<!-- if the user created the restaurant, dispaly the edit and delete options
+<%#= if current_user == @restaurant %>
+  <p>
+    <%#= link_to "Edit", edit_restaurant_path %><br>
+    <%#= link_to "Delete Restaurant", @restaurant, method: :delete, data: {confirm: "Are you sure you want to delete this restaurant?"} %>
+  </p>
+<%# end %> -->
 
 <h2><%= link_to "Reserve a table", new_restaurant_reservation_path(@restaurant) %></h2>
 
@@ -29,7 +31,7 @@
       <br>
       <% if reservation.user == current_user %>
         <%= link_to "Edit" , edit_restaurant_reservation_url(@restaurant, reservation) %>
-        <%= link_to "Cancel Reservation", restaurant_reservation_path(@restaurant, reservation), method: :delete, data: {confirm: "Are you sure you want to delete this restaurant?"} %>
+        <%= link_to "Cancel Reservation", restaurant_reservation_path(@restaurant, reservation), method: :delete, data: {confirm: "Are you sure you want to cancel this reservation?"} %>
 
       <% end %>
     </p>
