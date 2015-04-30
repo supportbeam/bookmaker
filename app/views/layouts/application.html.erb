@@ -11,26 +11,17 @@
   </head>
 
   <body>
-  	<nav>
-  		<%= link_to "Home", restaurants_path %>
-      <%= link_to "Add Restaurant", new_restaurant_url %>
-       <% if current_user %>
-        Signed in as <%= current_user.name %>
-        <%= link_to "My Reservations", user_path(current_user) %>
-        <%= link_to "Log out", session_path("current"), :method => :delete %>
-      <% else %>
-        <%= link_to "Log in", new_session_path %> or <%= link_to "Sign up", new_user_path %>
+    <div class="container">
+      <%= render 'layouts/navigation' %>
+
+      <% if flash[:notice] %>
+        <p id="notice"><%= flash[:notice] %></p>
       <% end %>
-  	</nav>
+      <% if flash[:alert] %>
+        <p id="alert"><%= flash[:alert] %></p>
+      <% end %>
 
-    <% if flash[:notice] %>
-      <p id="notice"><%= flash[:notice] %></p>
-    <% end %>
-    <% if flash[:alert] %>
-      <p id="alert"><%= flash[:alert] %></p>
-    <% end %>
-
-    <%= yield %>
-
+      <%= yield %>
+    </div>
   </body>
 </html>
