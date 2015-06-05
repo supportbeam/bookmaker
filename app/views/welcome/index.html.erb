@@ -1,0 +1,8 @@
+<div class="jumbotron">
+  <h1>Seat Yourself</h1>
+  <p class="lead">Search Restaurants and make reservations</p>
+  <% unless current_user %>
+    <p><a class="btn btn-lg btn-success" href="/users/new" role="button">Sign up today</a></p>
+    <%#= link_to  %>
+  <% end %>
+</div>

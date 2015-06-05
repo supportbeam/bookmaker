@@ -1,6 +1,7 @@
 Rails.application.routes.draw do  
 
-  root 'restaurants#index'
+  root 'welcome#index'
+  get 'welcome/index'
 
   resources :users, only: [:new, :create, :show]
 
